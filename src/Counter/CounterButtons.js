@@ -1,25 +1,26 @@
-import React from 'react'
+import React from 'react';
+import { connect } from 'react-redux'
+
+import { add, sub } from './store'
+
+const mapDispatchToProps= (dispatch) => ({
+    isaAdd: () => dispatch(add()),
+    isaSub: () => dispatch(sub())
+}) 
 
 class CounterButtons extends React.Component {
 
-    AddHandler = () => {
- 
-    }
-
-    SubHandler = () => {
-
-    }
 
     render() {
         return (
             <div>
                 <button
-                    onClick={this.AddHandler}
+                    onClick={this.props.isaAdd}
                 >
                     Add
                 </button>
                 <button
-                    onClick={this.SubHandler}
+                    onClick={this.props.isaSub}
                 >
                     Sub
                 </button>
@@ -29,4 +30,4 @@ class CounterButtons extends React.Component {
     }
 }
 
-export default CounterButtons
+export default connect(null, mapDispatchToProps)(CounterButtons)
